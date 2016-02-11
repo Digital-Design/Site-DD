@@ -14,7 +14,7 @@
 /*************************************************************************/
 
 /* fix konstantin 100% slider */
-html, body, #slideshow, #owl-demo, #owl-demo .item, #owl-demo .item img{
+html, body, #slideshow, #presentation, #owl-demo .item, #owl-demo .item img{
 	height: 100%;
 }
 /* fin fix */
@@ -277,35 +277,108 @@ body  {
 /*************************************************************************/
 /*************************************************************************/
 /*************************************************************************/
-
-.svglogo {
+#accueil{
+	background-color: #709ab2;
+}
+.accueil {
 	display : flex ;
-	justify-content:center;
 	align-items:center;
 	width:100%;
 	min-height: 100%;
 	height: 80%;
 }
+.mockupDD {
+	display: inline-block;
+	margin: auto;
+	max-width: 66%;
+	height: auto;
+}
 @media all {
-    .svglogo {
-        width: 1270px;
+    .accueil {
+        width: 100%;
     }
 }
  
-@media all and (max-width: 800px) {
-    .svglogo {
-        width: 110px;
+/*@media all and (max-width: 800px) {
+    .accueil > img {
+        url(img/mockup_tab.png);
     }
-}
+}*/
  
-@media all and (max-width: 480px) {
-    .svglogo {
+/*@media all and (max-width: 480px) {
+    .accueil {
         width: 55px;
     }
+}*/
+
+@media only screen and (min-width: 768px) { /*<<<large*/
+	#pc { display: block; max-width: 66%;}
+	#tab { display: none; }
+	#tel { display: none; }
 }
 
+@media only screen and (min-width: 480px) and (max-width: 767px) { /*<<<medium*/
+	#pc { display: none; }
+	#tab { display: block; }
+	#tel { display: none; }
+}
 
+@media only screen and (max-width: 479px) { /*<<<small*/
+	#pc { display: none; }
+	#tab { display: none; }
+	#tel { display: block; } 
+}
 
+/*************************************************************************/
+/*************************************************************************/
+/*************************************************************************/
+/*************************************************************************/
+/********************								**********************/
+/********************			DD C QUOI			**********************/
+/********************								**********************/
+/********************								**********************/
+/*************************************************************************/
+/*************************************************************************/
+/*************************************************************************/
+/*************************************************************************/
+/*************************************************************************/
+/*************************************************************************/
+#presentation{
+	background-color: #1a1a1a;
+	color: #f2f2f2;
+}
+.txtcenter {
+	text-align:center;
+}
+.h1Bold {
+	text-align: center;
+	font-weight: bold;
+}
+
+.design, .dev, .web{
+	height: 30%;
+}
+.design img, .dev img, .web img{
+	height: 150%;
+}
+
+.left {
+	line-height: 30px;
+	text-align:left;
+}
+
+.right {
+	line-height: 30px;
+	text-align: right;
+}
+.imgleft {
+	margin-top: 20px;
+	height:18em;
+}
+.imgright {
+
+	height:18em;
+}
 
 
 /*************************************************************************/
