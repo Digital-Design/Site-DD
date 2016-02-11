@@ -731,7 +731,19 @@ body  {
 		transform: translate3d(-100%, 0, 0) translate3d(-75px,115px,0) scale3d(0.5,0.5,1);
 	}
 }
-
+/*=====================*/
+/* Page contact */
+/*=====================*/
+.fond{
+	background-color: #709AB2;
+	color: white;
+}
+.centre{
+	text-align: center;
+}
+#divContact{
+	margin-top: 80px;
+}
 /************************************************************************************************/
 /*																								*/
 /* code CSS servant principalement à positionner, dimensionner et décorer les différents blocs 	*/
