@@ -1,3 +1,35 @@
+/* ---------- Global ----------- */
+
+@font-face {
+	font-family: 'BebasNeue-Book';
+	src: url('../fonts/BebasNeue Book.otf');
+}
+
+@font-face {
+	font-family: 'BebasNeue-Bold';
+	src: url('../fonts/BebasNeue Bold.otf');
+}
+
+
+@font-face {
+	font-family: 'OpenSans-Regular';
+	src: url('../fonts/OpenSans-Regular.ttf');
+}
+
+body {
+	font-family: 'OpenSans-Regular';
+}
+
+h1, h2 {
+	font-family: 'BebasNeue-Book';
+}
+
+h1 b, h2 b {
+	font-family: 'BebasNeue-Bold';
+	font-weight: normal;
+}
+
+
 /*************************************************************************/
 /*************************************************************************/
 /*************************************************************************/
@@ -424,6 +456,10 @@ body  {
 	margin-top: 0px;
 }
 
+#services div {
+	text-align: center;
+}
+
 /*************************************************************************/
 /*************************************************************************/
 /*************************************************************************/
@@ -447,8 +483,8 @@ body  {
 	height:70%;
 }
 
-.imgTrombi{
-	width: 20%;
+.imgTrombi img{
+	width: 100%;
 }
 
 .footer{
