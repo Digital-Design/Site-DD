@@ -872,6 +872,12 @@ body  {
 input.form-control, textarea.form-control{
 	border-radius: 0px;
 }
+
+button.center-block{
+	border-radius: 0px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
 /*==================================*/
 /* Page projets: partie réalisation */
 /*==================================*/
