@@ -881,6 +881,11 @@ button.center-block{
 /*==================================*/
 /* Page projets: partie réalisation */
 /*==================================*/
+
+#divRea{
+	background-color: #F2F2F2;
+}
+
 .grid {
 	position: relative;
 	clear: both;
