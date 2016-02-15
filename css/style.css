@@ -869,7 +869,9 @@ body  {
 #divContact{
 	margin-top: 80px;
 }
-
+input.form-control, textarea.form-control{
+	border-radius: 0px;
+}
 /*==================================*/
 /* Page projets: partie réalisation */
 /*==================================*/
