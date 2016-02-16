@@ -868,6 +868,11 @@ body  {
 .centre{
 	text-align: center;
 }
+
+.form-group>label{
+	font-weight: normal;
+}
+
 #divContact{
 	margin-top: 80px;
 }
