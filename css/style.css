@@ -69,8 +69,7 @@ html, body, #slideshow, .item, #owl-demo .item img{
 }
 
 body  {
-	/*background: #f7f7f7;*/
-	background: #709ab2;
+	background: #004700;
 	min-height: 100%;
 }
 
@@ -209,6 +208,7 @@ body  {
 .bt-menu ul li,
 .bt-menu ul li a {
 	display: block;
+	color: #fff;
 }
 
 .bt-menu ul li a {
@@ -217,7 +217,6 @@ body  {
 
 .bt-menu ul:nth-of-type(2) li {
 	float: left;
-	font-size: 0px;
 }
 
 .bt-menu ul li {
@@ -305,9 +304,9 @@ body  {
 }
 
 .bt-menu ul:nth-of-type(2) li a {
-	color: transparent;
+	color: #fff;
 	text-align: center;
-	font-size: 0px;
+	font-size: 26px;
 }
 
 .bt-menu ul li a:before {
@@ -319,8 +318,8 @@ body  {
 
 .bt-menu ul:first-of-type li a:hover,
 .bt-menu ul:first-of-type li a:focus,
-.bt-menu ul li a:hover:before,
-.bt-menu ul li a:focus:before {
+.bt-menu ul li a:hover i:before,
+.bt-menu ul li a:focus i:before {
 	color: #709ab2;
 }
 
@@ -374,18 +373,17 @@ body  {
 	text-align:center;
 }
 
-.design img, .dev img, .web img{
+#presentation img {
 	width: 100%;
 }
 
-.left {
-	line-height: 30px;
-	text-align:left;
+#presentation p {
+	width: 100%;
 }
 
-.right {
-	line-height: 30px;
-	text-align: right;
+.centreVerticalement {
+	display: flex;
+	align-items: center;
 }
 
 
@@ -404,12 +402,6 @@ body  {
 #services div {
 	text-align: center;
 }
-
-.description {
-	height: 100%;
-	vertical-align: middle;
-}
-
 
 
 /* --------------------- Equipe --------------------- */ 
@@ -1004,4 +996,28 @@ figure.effect-moses:hover p {
 
 figure.effect-moses:hover img {
 	opacity: 0.6;
+}
+
+/* --------------------- Footer --------------------- */ 
+
+footer {
+	/*height: 40px;*/
+	font-family: 'BebasNeue-Bold';
+	background-color: #1a1a1a;
+	color: #fff;
+	height: auto;
+}
+
+footer ul {
+	list-style: none;
+	/*height: 50px;*/
+}
+
+footer ul li {
+	margin-top: 15px;
+	margin-right: 50px;
+}
+
+footer ul li:first-child {
+	font-size: 20px;
 }
