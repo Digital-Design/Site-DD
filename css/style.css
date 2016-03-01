@@ -34,7 +34,7 @@ h1 {
 }
 
 h2 {
-	font-size: 40px
+	font-size: 40px;
 }
 
 h1 b, h2 b {
@@ -997,16 +997,23 @@ figure.effect-moses:hover img {
 /* --------------------- Footer --------------------- */ 
 
 footer {
-	/*height: 40px;*/
 	font-family: 'BebasNeue-Bold';
 	background-color: #1a1a1a;
 	color: #fff;
 	height: auto;
 }
 
+footer>span{
+	padding: 10px;
+}
+
+.droite{
+	float: right;
+}
+
+/*
 footer ul {
 	list-style: none;
-	/*height: 50px;*/
 }
 
 footer ul li {
@@ -1016,4 +1023,4 @@ footer ul li {
 
 footer ul li:first-child {
 	font-size: 20px;
-}
+}*/
