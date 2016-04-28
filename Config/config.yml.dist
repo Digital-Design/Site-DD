@@ -1,0 +1,7 @@
+parameters:
+    database_driver:      pdo_mysql
+    database_host:        localhost
+    database_dbname:        site
+    database_user:        root
+    database_password:    s3curit3
+    displayErrorDetails:  false

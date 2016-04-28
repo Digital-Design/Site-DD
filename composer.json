@@ -1,0 +1,31 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "slim/twig-view": "^2.1",
+        "juliangut/slim-doctrine": "^1.0",
+        "symfony/yaml": "^3.0",
+        "incenteev/composer-parameter-handler": "^2.1",
+        "panique/php-sass": "^1.0",
+        "illuminate/database": "^5.2"
+    },
+    "archive": {
+      "exclude": ["vendor", ".DS_Store", "*.log"]
+    },
+    "scripts": {
+      "post-install-cmd": [
+        "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+        "sudo chown -R www-data:www-data ./"
+      ],
+      "post-update-cmd": [
+        "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+        "sudo chown -R www-data:www-data ./"
+      ]
+    },
+    "extra": {
+      "incenteev-parameters": {
+        "file": "Config/config.yml",
+        "dist-file": "Config/config.yml.dist",
+        "keep-outdated": true
+      }
+    }
+}
