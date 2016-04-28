@@ -13,7 +13,7 @@ Installer <a href="https://getcomposer.org/doc/00-intro.md" target="_blank">comp
 ## Maquettes
 
 ### Accueil
-![alt tag](https://github.com/Digital-Design/Site-DD/blob/master/Mmquettes/home.png)
+![alt tag](https://github.com/Digital-Design/Site-DD/blob/master/maquettes/home.png)
 
 ### Projets
 ![alt tag](https://github.com/Digital-Design/Site-DD/blob/master/maquettes/projets.png)
