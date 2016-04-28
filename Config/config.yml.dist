@@ -1,7 +1,12 @@
 parameters:
-    database_driver:      pdo_mysql
-    database_host:        localhost
-    database_dbname:        site
-    database_user:        root
-    database_password:    s3curit3
+    #identifiants db
+    driver:  mysql
+    host:  localhost
+    username:  root
+    password:  s3curit3
+    database: site
+    charset:  utf8
+    collation:  utf8_unicode_ci
+    prefix: ~
+    #php slim errors
     displayErrorDetails:  false
