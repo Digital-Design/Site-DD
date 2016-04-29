@@ -19,6 +19,7 @@ body section {
 body h1, body h2 {
   font-family: 'BebasNeue-Book';
   text-align: center;
+  color: #fff;
 }
 body h1 {
   font-size: 80px;
