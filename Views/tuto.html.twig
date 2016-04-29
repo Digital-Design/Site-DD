@@ -1,5 +1,23 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-tuto
+<h1>Tuto</h1>
+{% for tuto in tutos %}
+  {# dump(tuto) #}
+  <h2>{{ tuto.titre }}</h2>
+  <p>{{ tuto.description }}</p>
+  <p>type:{{ tuto.type }}</p>
+  <p>media {{ tuto.media }} </p>
+  <p>date {{ tuto.date|date("m/d/Y") }} </p>
+  <p>Membres:
+  {% for membre in tuto.membres %}
+    {{ membre.nom }} - {{ membre.prenom }}
+  {% endfor %}
+  </p>
+  <p>Langages:
+  {% for langage in tuto.langages %}
+    {{ langage.langage }},
+  {% endfor %}
+  </p>
+{% endfor %}
 {% endblock %}

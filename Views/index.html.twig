@@ -1,5 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-index
+<h1>Index</h1>
+{% for promotion in promotions %}
+  {{ dump(promotion) }}
+  {{ promotion.membre.nom }}
+  {{ promotion.membre.prenom }}
+  {{ promotion.membre.site }}
+  {{ promotion.role }}
+  {{ promotion.date }}
+
+{% endfor %}
 {% endblock %}

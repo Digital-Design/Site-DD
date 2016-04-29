@@ -1,5 +1,23 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-projets
+  <h1>Projets</h1>
+  {% for projet in projets %}
+    {# dump(projet) #}
+    <h2>{{ projet.titre }}</h2>
+    <p>{{ projet.description }}</p>
+    <p>type:{{ projet.type }}</p>
+    <p>media {{ projet.media }} </p>
+    <p>date {{ projet.date|date("m/d/Y") }} </p>
+    <p>Membres:
+    {% for membre in projet.membres %}
+      {{ membre.nom }} - {{ membre.prenom }}
+    {% endfor %}
+    </p>
+    <p>Langages:
+    {% for langage in projet.langages %}
+      {{ langage.langage }},
+    {% endfor %}
+    </p>
+  {% endfor %}
 {% endblock %}

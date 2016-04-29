@@ -31,13 +31,15 @@ $container['notFoundHandler'] = function ($container) {
 
 // Register View component on container
 $container['view'] = function ($container) {
-    $view = new \Slim\Views\Twig('Views'/*, [
-        'cache' => 'cache'
-    ]*/);
+    $view = new \Slim\Views\Twig('Views', [
+      'debug'=> true,
+      'cache' => 'cache'
+    ]);
     $view->addExtension(new \Slim\Views\TwigExtension(
         $container['router'],
         $container['request']->getUri()
     ));
+    $view->addExtension(new Twig_Extension_Debug());
     return $view;
 };
 
