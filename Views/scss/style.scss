@@ -1,0 +1,102 @@
+@import "_config.scss";
+
+/* FONT */
+@font-face {
+	font-family: 'BebasNeue-Book';
+	src: url('../fonts/BebasNeue Book.otf');
+}
+
+@font-face {
+	font-family: 'BebasNeue-Bold';
+	src: url('../fonts/BebasNeue Bold.otf');
+}
+
+
+@font-face {
+	font-family: 'OpenSans-Regular';
+	src: url('../fonts/OpenSans-Regular.ttf');
+}
+/* END FONT */
+
+/* GLOBAL */
+
+body {
+	font-family: 'OpenSans-Regular';
+
+  section {
+  	padding: 80px 10%;
+  }
+
+  h1, h2 {
+  	font-family: 'BebasNeue-Book';
+  	text-align: center;
+  }
+
+  h1 {
+  	font-size: 80px;
+  }
+
+  h2 {
+  	font-size: 40px;
+  }
+
+  h1 b, h2 b {
+  	font-family: 'BebasNeue-Bold';
+  	font-weight: normal;
+  }
+
+  a {
+  	text-decoration: underline;
+  	color: #fff;
+  }
+
+  a:focus {
+  	outline: none;
+  }
+}
+
+/* END GLOBAL */
+
+/* HEADER */
+.accueil {
+	text-align: center;
+	width:100%;
+	min-height: 100%;
+	height: 80%;
+
+  .mockupDD {
+  	display: inline-block;
+  	margin: auto;
+  	width: 100%;
+  	height: auto;
+  }
+
+  .mockupDD img {
+  	width: 100%;
+  }
+
+  @media all {
+      .accueil {
+          width: 100%;
+      }
+  }
+
+  @media only screen and (min-width: 1025px) { /*<<<large*/
+  	#pc { display: block; max-width: 66%;}
+  	#tab { display: none; }
+  	#tel { display: none; }
+  }
+
+  @media only screen and (min-width: 480px) and (max-width: 1024px) { /*<<<medium*/
+  	#pc { display: none; }
+  	#tab { display: block; }
+  	#tel { display: none; }
+  }
+
+  @media only screen and (max-width: 479px) { /*<<<small*/
+  	#pc { display: none; }
+  	#tab { display: none; }
+  	#tel { display: block; }
+  }
+}
+/* END HEADER */
