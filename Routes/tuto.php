@@ -17,11 +17,11 @@ $app->group('/tuto', function() use ($app) {
         $tutos[$key]->membres[] = Capsule::table('MEMBRE')->where('id',$tuto_membre->id_membre)->first();
       }
 
-      //ajout des langages au tuto
-      $tuto_langages = Capsule::table('TUTO_LANGAGE')->where('id_langage',$tuto->id)->get();
-      $tutos[$key]->langages = array();
-      foreach ($tuto_langages as $tuto_langage) {
-        $tutos[$key]->langages[] = Capsule::table('LANGAGE')->where('id',$tuto_langage->id_langage)->first();
+      //ajout des languages au tuto
+      $tuto_languages = Capsule::table('TUTO_LANGUAGE')->where('id_language',$tuto->id)->get();
+      $tutos[$key]->languages = array();
+      foreach ($tuto_languages as $tuto_language) {
+        $tutos[$key]->languages[] = Capsule::table('LANGUAGE')->where('id',$tuto_language->id_language)->first();
       }
     }
     return $this->view->render($response, 'tuto.html.twig', array('tutos' => $tutos));

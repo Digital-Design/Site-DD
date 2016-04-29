@@ -2,7 +2,6 @@
     "require": {
         "slim/slim": "^3.0",
         "slim/twig-view": "^2.1",
-        "juliangut/slim-doctrine": "^1.0",
         "symfony/yaml": "^3.0",
         "incenteev/composer-parameter-handler": "^2.1",
         "panique/php-sass": "^1.0",

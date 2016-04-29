@@ -1,3 +1,12 @@
+CREATE DATABASE digitaldesign_site;
+USE digitaldesign_site;
+
+CREATE TABLE IF NOT EXISTS `TYPE` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` varchar(75) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 CREATE TABLE IF NOT EXISTS `TUTO` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `titre` varchar(25) NOT NULL,
@@ -8,12 +17,6 @@ CREATE TABLE IF NOT EXISTS `TUTO` (
   `active` tinyint(1) DEFAULT 1,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`id_type`) REFERENCES `TYPE`(`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-CREATE TABLE IF NOT EXISTS `TYPE` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `type` varchar(75) NOT NULL,
-  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS `PROJET` (
@@ -37,9 +40,9 @@ CREATE TABLE IF NOT EXISTS `MEMBRE` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS `LANGAGE` (
+CREATE TABLE IF NOT EXISTS `LANGUAGE` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `langage` varchar(75) NOT NULL,
+  `language` varchar(75) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -60,12 +63,12 @@ CREATE TABLE IF NOT EXISTS `PROJET_MEMBRE` (
   FOREIGN KEY (`id_membre`) REFERENCES `MEMBRE`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS `PROJET_LANGAGE` (
+CREATE TABLE IF NOT EXISTS `PROJET_LANGUAGE` (
   `id_projet` int(11) NOT NULL,
-  `id_langage` int(11) NOT NULL,
-  PRIMARY KEY (`id_projet`,`id_langage`),
+  `id_language` int(11) NOT NULL,
+  PRIMARY KEY (`id_projet`,`id_language`),
   FOREIGN KEY (`id_projet`) REFERENCES `PROJET`(`id`),
-  FOREIGN KEY (`id_langage`) REFERENCES `LANGAGE`(`id`)
+  FOREIGN KEY (`id_language`) REFERENCES `LANGUAGE`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE IF NOT EXISTS `TUTO_MEMBRE` (
@@ -76,18 +79,18 @@ CREATE TABLE IF NOT EXISTS `TUTO_MEMBRE` (
   FOREIGN KEY (`id_membre`) REFERENCES `MEMBRE`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS `TUTO_LANGAGE` (
+CREATE TABLE IF NOT EXISTS `TUTO_LANGUAGE` (
   `id_tuto` int(11) NOT NULL,
-  `id_langage` int(11) NOT NULL,
-  PRIMARY KEY (`id_tuto`,`id_langage`),
+  `id_language` int(11) NOT NULL,
+  PRIMARY KEY (`id_tuto`,`id_language`),
   FOREIGN KEY (`id_tuto`) REFERENCES `TUTO`(`id`),
-  FOREIGN KEY (`id_langage`) REFERENCES `LANGAGE`(`id`)
+  FOREIGN KEY (`id_language`) REFERENCES `LANGUAGE`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS `MEMBRE_LANGAGE` (
+CREATE TABLE IF NOT EXISTS `MEMBRE_LANGUAGE` (
   `id_membre` int(11) NOT NULL,
-  `id_langage` int(11) NOT NULL,
-  PRIMARY KEY (`id_membre`,`id_langage`),
+  `id_language` int(11) NOT NULL,
+  PRIMARY KEY (`id_membre`,`id_language`),
   FOREIGN KEY (`id_membre`) REFERENCES `MEMBRE`(`id`),
-  FOREIGN KEY (`id_langage`) REFERENCES `LANGAGE`(`id`)
+  FOREIGN KEY (`id_language`) REFERENCES `LANGUAGE`(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

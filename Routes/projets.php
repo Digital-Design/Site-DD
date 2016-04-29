@@ -17,11 +17,11 @@ $app->group('/projets', function() use ($app) {
         $projets[$key]->membres[] = Capsule::table('MEMBRE')->where('id',$projet_membre->id_membre)->first();
       }
 
-      //ajout des langages au projet
-      $projet_langages = Capsule::table('PROJET_LANGAGE')->where('id_projet',$projet->id)->get();
-      $projets[$key]->langages = array();
-      foreach ($projet_langages as $projet_langage) {
-        $projets[$key]->langages[] = Capsule::table('LANGAGE')->where('id',$projet_langage->id_langage)->first();
+      //ajout des languages au projet
+      $projet_languages = Capsule::table('PROJET_LANGUAGE')->where('id_projet',$projet->id)->get();
+      $projets[$key]->languages = array();
+      foreach ($projet_languages as $projet_language) {
+        $projets[$key]->languages[] = Capsule::table('LANGUAGE')->where('id',$projet_language->id_language)->first();
       }
     }
     return $this->view->render($response, 'projets.html.twig', array('projets' => $projets));

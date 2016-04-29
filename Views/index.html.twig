@@ -3,8 +3,8 @@
 {% block body %}
 <h1>Index</h1>
 {% for promotion in promotions %}
-  {{ dump(promotion) }}
-  {{ promotion.membre.nom }}
+  {# dump(promotion) #}
+  <p>{{ promotion.membre.nom }}</p>
   {{ promotion.membre.prenom }}
   {{ promotion.membre.site }}
   {{ promotion.role }}
