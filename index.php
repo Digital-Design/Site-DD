@@ -13,6 +13,7 @@ $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
 //compilation du scss
+//!\ a commenter après avoir généré le css
 SassCompiler::run("Views/scss/", "Views/css/");
 
 $container = new \Slim\Container([
