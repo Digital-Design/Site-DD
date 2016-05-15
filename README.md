@@ -7,7 +7,7 @@ Installer ```composer```, faire un composer install à la racine du projet, remp
 
 Installation de la base de données via la commande ```php app/console doctrine:schema:update --force```.
 
-Création d'un utilisateur admin via la commande ```app/console fos:user:create [nomdecompte] [mail] [motdepasse] --super-admin```, remplacer les [] par vos données.
+Création d'un utilisateur admin via la commande ```php app/console fos:user:create [nomdecompte] [mail] [motdepasse] --super-admin```, remplacer les [] par vos données.
 
 Vider le cache ```php app/console cache:clear --env=prod``` en production.
 
