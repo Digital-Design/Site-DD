@@ -26,7 +26,7 @@ class ProjetAdmin extends Admin
         $formMapper->add('type', 'entity', array('class' => 'AppBundle\Entity\Type', 'property' => 'type')) ;
         $formMapper->add('langages', 'entity', array('class' => 'AppBundle\Entity\Langage', 'property' => 'langage', 'multiple' => true)) ;
         $formMapper->add('membres', 'entity', array('class' => 'AppBundle\Entity\Membre', 'property' => 'nom', 'multiple' => true)) ;
-        $formMapper->add('media', 'file', array('required' => false, 'help'=>"Indiquer un média décrivant ce projet.")) ;
+        $formMapper->add('file', 'file', array('required' => false, 'help'=>"Indiquer un média décrivant ce projet.", 'label' => 'Media')) ;
         $formMapper->add('active', 'choice', array('help'=>"Activer l'affichage du projet", 'choices' => array(
                 '0' => 'Désactiver',
                 '1' => 'Activer'
@@ -49,7 +49,7 @@ class ProjetAdmin extends Admin
 
     private function manageFileUpload($image)
     {
-        if ($image->getMedia()) {
+        if ($image->getFile()) {
             $image->refreshUpdated();
         }
     }

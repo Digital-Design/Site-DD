@@ -11,14 +11,13 @@
   	<meta name="keywords" content="design, isen, brest, association, web, css" />
   	<meta name="author" content="Digital Design" />
 
-  	<link rel="shortcut icon" href="img/favicon.png">
+  	<link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
 
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
     {% stylesheets filter="scssphp" output="assets/css/app.css"
-
-    "assets/scss/*.scss"
+      "assets/scss/*.scss"
     %}
       <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}

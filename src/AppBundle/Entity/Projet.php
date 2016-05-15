@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Projet
 {
-    const SERVER_PATH_TO_IMAGE_FOLDER = '/server/path/to/images';
+    const SERVER_PATH_TO_IMAGE_FOLDER = 'web/assets/img';
 
     /**
      * @var int
@@ -41,7 +41,7 @@ class Projet
     private $langages;
 
     /**
-    * @ORM\OneToOne(targetEntity="AppBundle\Entity\Type")
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Type")
     */
     private $type;
 
@@ -51,8 +51,6 @@ class Projet
      * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
     private $description;
-
-    private $media;
 
     /**
      * @var \DateTime
@@ -75,29 +73,29 @@ class Projet
      */
     private $fini;
 
-    public function __toString()
-    {
-        return (string) $this->titre;
-    }
-
     /**
-     * Sets media.
-     *
-     * @param UploadedMedia $media
+     * Unmapped property to handle file uploads
      */
-    public function setMedia(UploadedFile $media = null)
+    private $file;
+
+    /**
+     * Sets file.
+     *
+     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
+     */
+    public function setFile(\Symfony\Component\HttpFoundation\File\UploadedFile $file = null)
     {
-        $this->media = $media;
+        $this->file = $file;
     }
 
     /**
-     * Get media.
+     * Get file.
      *
      * @return UploadedFile
      */
-    public function getMedia()
+    public function getFile()
     {
-        return $this->media;
+        return $this->file;
     }
 
     /**
@@ -106,7 +104,7 @@ class Projet
     public function upload()
     {
         // the file property can be empty if the field is not required
-        if (null === $this->getMedia()) {
+        if (null === $this->getFile()) {
             return;
         }
 
@@ -114,16 +112,16 @@ class Projet
         // sanitize it at least to avoid any security issues
 
         // move takes the target directory and target filename as params
-        $this->getMedia()->move(
+        $this->getFile()->move(
             self::SERVER_PATH_TO_IMAGE_FOLDER,
-            $this->getMedia()->getClientOriginalName()
+            $this->getFile()->getClientOriginalName()
         );
 
         // set the path property to the filename where you've saved the file
-        $this->filename = $this->getMedia()->getClientOriginalName();
+        $this->filename = $this->getFile()->getClientOriginalName();
 
         // clean up the file property as you won't need it anymore
-        $this->setMedia(null);
+        $this->setFile(null);
     }
 
     /**
@@ -141,6 +139,12 @@ class Projet
     {
         $this->setUpdated(new \DateTime());
     }
+
+    public function __toString()
+    {
+        return (string) $this->titre;
+    }
+
 
     /**
      * Get id

@@ -118,7 +118,10 @@ fos_user:
 
 #compile scss and js minifying
 assetic:
+    debug:          %kernel.debug%
+    use_controller: true
     filters:
+        cssrewrite: ~
         jsqueeze: ~
         scssphp:
             formatter: 'Leafo\ScssPhp\Formatter\Compressed'
