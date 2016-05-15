@@ -20,7 +20,7 @@ class PromotionAdmin extends Admin
     {
         $formMapper->with("Création d'une promotion", array('description' => "Ce formulaire permet la création d'une promotion.")) ;
         $formMapper->add('date', 'text', array('label' => 'Date de la promotion', 'help'=>"Interval d'années de cette promotion (ex : 2015 - 2016)")) ;
-        $formMapper->add('membres', 'entity', array('class' => 'AppBundle\Entity\Membre', 'property' => 'nom', 'multiple' => true)) ;
+        $formMapper->add('membres', 'entity', array('class' => 'AppBundle\Entity\Membre', 'property' => 'nom', 'multiple' => true, 'required'=>false)) ;
 
     }
 

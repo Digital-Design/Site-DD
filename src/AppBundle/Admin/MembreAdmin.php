@@ -18,13 +18,43 @@ class MembreAdmin extends Admin
 	*/
     protected function configureFormFields(FormMapper $formMapper)
     {
+
+        $membre = $this->getSubject();
+
+        $fileFieldOptions = array('required' => false, "help"=>"Indiquer une image décrivant ce membre.", 'label' => 'Image');
+        if ($membre && ($webPath = $membre->getWebPath())) {
+
+            $container = $this->getConfigurationPool()->getContainer();
+            $fullPath = $container->get('request')->getBasePath().'/'.$webPath;
+
+            $fileFieldOptions['help'] = '<img src="'.$fullPath.'" class="admin-preview" height="300" />';
+        }
+
         $formMapper->with("Création d'un Membre", array('description' => "Ce formulaire permet la création d'un membre.")) ;
         $formMapper->add('nom', 'text', array('help'=>"Indiquer un nom décrivant ce membre.")) ;
         $formMapper->add('prenom', 'text', array('help'=>"Indiquer un prénom décrivant ce membre.")) ;
+        $formMapper->add('promotions', 'entity', array('help'=>"Indiquer une ou plusieurs promotions de ce membre.",'class' => 'AppBundle\Entity\Promotion', 'multiple' => true)) ;
         $formMapper->add('description', 'textarea', array('help'=>"Indiquer une description ce membre.", 'required'=>false)) ;
-        $formMapper->add('image', 'text', array("help"=>"Indiquer une image décrivant ce membre.", 'required'=>false)) ;
+        $formMapper->add('file', 'file', $fileFieldOptions) ;
         $formMapper->add('site', 'url', array("help"=>"Indiquer un site décrivant ce membre.", 'required'=>false)) ;
+    }
 
+    public function prePersist($membre) {
+      $this->saveFile($membre);
+    }
+
+    public function preUpdate($membre) {
+      $this->saveFile($membre);
+    }
+
+    public function saveFile($membre) {
+      $membre->upload();
+    }
+
+    private function manageFileUpload($membre) {
+      if ($membre->getFile()) {
+        $membre->refreshUpdated();
+      }
     }
 
     /**

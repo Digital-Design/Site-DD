@@ -22,7 +22,7 @@ class Promotion
     private $id;
 
     /**
-    * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Membre")
+    * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Membre", inversedBy="promotions")
     */
     private $membres;
 

@@ -18,6 +18,16 @@ class ProjetAdmin extends Admin
 	*/
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $projet = $this->getSubject();
+
+        $fileFieldOptions = array('required' => false, 'help'=>"Indiquer un média décrivant ce projet.", 'label' => 'Media');
+        if ($projet && ($webPath = $projet->getWebPath())) {
+
+            $container = $this->getConfigurationPool()->getContainer();
+            $fullPath = $container->get('request')->getBasePath().'/'.$webPath;
+
+            $fileFieldOptions['help'] = '<img src="'.$fullPath.'" class="admin-preview" height="300" />';
+        }
 
         $formMapper->with("Création d'un projet", array('description' => "Ce formulaire permet la création d'un projet.")) ;
         $formMapper->add('titre', 'text', array('help'=>"Indiquer un titre décrivant ce projet.")) ;
@@ -26,7 +36,7 @@ class ProjetAdmin extends Admin
         $formMapper->add('type', 'entity', array('class' => 'AppBundle\Entity\Type', 'property' => 'type')) ;
         $formMapper->add('langages', 'entity', array('class' => 'AppBundle\Entity\Langage', 'property' => 'langage', 'multiple' => true)) ;
         $formMapper->add('membres', 'entity', array('class' => 'AppBundle\Entity\Membre', 'property' => 'nom', 'multiple' => true)) ;
-        $formMapper->add('file', 'file', array('required' => false, 'help'=>"Indiquer un média décrivant ce projet.", 'label' => 'Media')) ;
+        $formMapper->add('file', 'file', $fileFieldOptions) ;
         $formMapper->add('active', 'choice', array('help'=>"Activer l'affichage du projet", 'choices' => array(
                 '0' => 'Désactiver',
                 '1' => 'Activer'
@@ -37,21 +47,22 @@ class ProjetAdmin extends Admin
             ))) ;
     }
 
-    public function prePersist($image)
-    {
-        $this->manageFileUpload($image);
+    public function prePersist($projet) {
+      $this->saveFile($projet);
     }
 
-    public function preUpdate($image)
-    {
-        $this->manageFileUpload($image);
+    public function preUpdate($projet) {
+      $this->saveFile($projet);
     }
 
-    private function manageFileUpload($image)
-    {
-        if ($image->getFile()) {
-            $image->refreshUpdated();
-        }
+    public function saveFile($projet) {
+      $projet->upload();
+    }
+
+    private function manageFileUpload($projet) {
+      if ($projet->getFile()) {
+        $projet->refreshUpdated();
+      }
     }
 
     /**

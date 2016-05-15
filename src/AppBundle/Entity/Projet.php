@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Projet
@@ -12,7 +14,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Projet
 {
-    const SERVER_PATH_TO_IMAGE_FOLDER = 'web/assets/img';
 
     /**
      * @var int
@@ -48,7 +49,7 @@ class Projet
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -74,70 +75,51 @@ class Projet
     private $fini;
 
     /**
-     * Unmapped property to handle file uploads
+     * @var string
+     *
+     * @ORM\Column(name="media", type="string", length=255, nullable=true)
      */
-    private $file;
+    protected $media;
 
     /**
-     * Sets file.
-     *
-     * @param \Symfony\Component\HttpFoundation\File\UploadedFile $file
+     * @Assert\File(maxSize="6000000")
      */
-    public function setFile(\Symfony\Component\HttpFoundation\File\UploadedFile $file = null)
+    protected $file;
+
+    public function getAbsolutePath()
     {
-        $this->file = $file;
+      return null === $this->media ? null : $this->getUploadRootDir().'/'.$this->media;
     }
 
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
+    public function getWebPath()
     {
-        return $this->file;
+      return null === $this->media ? null : $this->getUploadDir().'/'.$this->media;
     }
 
-    /**
-     * Manages the copying of the file to the relevant place on the server
-     */
+    protected function getUploadRootDir()
+    {
+      return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'assets/img/projets';
+    }
+
     public function upload()
     {
-        // the file property can be empty if the field is not required
         if (null === $this->getFile()) {
             return;
         }
 
-        // we use the original file name here but you should
-        // sanitize it at least to avoid any security issues
-
-        // move takes the target directory and target filename as params
         $this->getFile()->move(
-            self::SERVER_PATH_TO_IMAGE_FOLDER,
+            $this->getUploadRootDir(),
             $this->getFile()->getClientOriginalName()
         );
 
-        // set the path property to the filename where you've saved the file
-        $this->filename = $this->getFile()->getClientOriginalName();
+        $this->path = $this->getFile()->getClientOriginalName();
 
-        // clean up the file property as you won't need it anymore
-        $this->setFile(null);
-    }
-
-    /**
-     * Lifecycle callback to upload the file to the server
-     */
-    public function lifecycleFileUpload()
-    {
-        $this->upload();
-    }
-
-    /**
-     * Updates the hash value to force the preUpdate and postUpdate events to fire
-     */
-    public function refreshUpdated()
-    {
-        $this->setUpdated(new \DateTime());
+        $this->file = null;
     }
 
     public function __toString()
@@ -157,6 +139,26 @@ class Projet
     }
 
     /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
      * Set titre
      *
      * @param string $titre
@@ -166,6 +168,30 @@ class Projet
     public function setTitre($titre)
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+
+    /**
+     * Get media
+     *
+     * @return string
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * Set media
+     *
+     * @param string $media
+     *
+     * @return Projet
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
 
         return $this;
     }
