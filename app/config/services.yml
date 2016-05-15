@@ -1,0 +1,42 @@
+
+parameters:
+    parameter_name: value
+
+services:
+
+  admin.langage:
+    class: AppBundle\Admin\LangageAdmin
+    arguments: [~, AppBundle\Entity\Langage, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, group: "Projets",  icon: '<i class="fa fa-keyboard-o"></i>', position:right, label: Langages }
+
+  admin.projet:
+    class: AppBundle\Admin\ProjetAdmin
+    arguments: [~, AppBundle\Entity\Projet, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, group: "Projets",  label: Projets }
+
+
+  admin.tuto:
+    class: AppBundle\Admin\TutoAdmin
+    arguments: [~, AppBundle\Entity\Tuto, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, group: "Projets",  label: Tutos }
+
+  admin.type:
+    class: AppBundle\Admin\TypeAdmin
+    arguments: [~, AppBundle\Entity\Type, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, group: "Projets",  label: Types }
+
+  admin.membre:
+    class: AppBundle\Admin\MembreAdmin
+    arguments: [~, AppBundle\Entity\Membre, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, group: "Ressources",  icon: '<i class="fa fa-users"></i>', label: Membres }
+
+  admin.promotion:
+    class: AppBundle\Admin\PromotionAdmin
+    arguments: [~, AppBundle\Entity\Promotion, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, group: "Ressources",  label: Promotions }
