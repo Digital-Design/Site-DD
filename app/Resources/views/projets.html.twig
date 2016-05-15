@@ -34,9 +34,9 @@
   				<div class="grid">
             {% for projet in projets %}
               {% if projet.fini == 1 %}
-               {% if projet.media %}
-                 <figure class="effect-steve">
-                   <img src="{{ projet.media }}" alt="{{ projet.titre }}"/>
+               {% if 1 %}
+                 <figure class="effect-ming">
+                   <img src="{{ asset('assets/img/projets/donkeyrugby1.jpg') }}" alt="{{ projet.titre }}"/>
                    <figcaption>
                      <h2>{{ projet.titre|raw }}</h2>
                      <p>{{ projet.description|raw }}</p>
@@ -51,13 +51,13 @@
   					</div>
   				</div>
   			</div>
-  			</section>
+  		</section>
 
 
 
 
 
-  <h1>Projets</h1>
+  <h1>Nos Projets</h1>
   {% for projet in projets %}
     {# dump(projet) #}
     <h2>{{ projet.titre }}</h2>
@@ -71,9 +71,6 @@
     {% endfor %}
     </p>
     <p>Languages:
-    {% for language in projet.languages %}
-      {{ language.language }},
-    {% endfor %}
     </p>
   {% endfor %}
 {% endblock %}
