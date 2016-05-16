@@ -256,11 +256,22 @@ body {
 /* END SLIDESHOW */
 
 /* REALISATIONS */
+
+.gallery-cell {
+	img {
+		height: 100%;
+	}
+}
+
 #divRea{
 	background-color: $grey-color;
 
 	h1 {
 		color: $black-color;
+	}
+
+	p {
+		text-align: center;
 	}
 }
 
@@ -364,7 +375,7 @@ figure.effect-sarah img {
 }
 
 figure.effect-sarah:hover img {
-	opacity: 0.4;
+	opacity: 0.1;
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
 }
@@ -412,6 +423,42 @@ figure.effect-sarah:hover p {
 	opacity: 1;
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
+}
+
+.modal-header {
+	h3 {
+		font-family: 'BebasNeue-Book', Arial;
+		border-bottom: 3px solid $blue-color;
+	}
+}
+
+.modal-body {
+	img {
+		width: 100%;
+	}
+}
+
+.modal-footer {
+	> div {
+		border-top: 2px solid $blue-color;
+		text-align: left;
+	}
+
+	.membres {
+		text-align: right;
+		float: right;
+		margin-top: 8px;
+
+		a {
+			border-radius: 100%;
+			width: 30px;
+			display: inline-block;
+
+			img {
+				width: 100%;
+			}
+		}
+	}
 }
 /* END REALISATIONS */
 

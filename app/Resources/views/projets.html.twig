@@ -17,7 +17,7 @@
           {% if projet.fini == 0 %}
            {% if projet.media %}
       				<div class="gallery-cell">
-      					<img src="{{ projet.mdeia }}" alt="{{ projet.titre }}"/>
+      					<img src="assets/img/projets/{{ projet.media }}" alt="{{ projet.titre }}"/>
       				</div>
             {% else %}
               {# lien youtube #}
@@ -38,7 +38,7 @@
               {% if projet.fini == 1 %}
                {% if projet.media %}
                  <figure class="effect-sarah">
-                   <img src="/Site-DD/web/assets/img/mockup_pc.png" alt="{{ projet.titre }}"/>
+                   <img src="assets/img/projets/{{ projet.media }}" alt="{{ projet.titre }}"/>
                    <figcaption>
                      <h2>{{ projet.titre|raw }}</h2>
                      <p>{{ projet.description|raw }}</p>
@@ -69,23 +69,28 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-sm-4">
-									<img src="{{ projet.media }}" alt="{{ projet.titre }}"/>
+									{% if projet.media %}
+										<img src="assets/img/projets/{{ projet.media }}" alt="{{ projet.titre }}"/>
+									{% endif %}
 								</div>
 								<div class="col-sm-8">
 									<p>{{ projet.description }}</p>
 								</div>
-								{% for langage in projet.langages %}
-										<span class="badge">{{ langage.langage }}</span>
-								{% endfor %}
 							</div>
+							<br>
+							{% for langage in projet.langages %}
+									<span class="badge">{{ langage.langage }}</span>
+							{% endfor %}
 						</div>
 		      </div>
 		      <div class="modal-footer">
-						Projet de type : {{ projet.type }}
 						<div>
-							{% for membre in projet.membres %}
-								<a href="" data-toggle="tooltip" data-placement="top" data-original-title="{{ membre.prenom }} 	{{ membre.nom }}"><img src="{% if membre.image %}{{ membre.image }}{% else %}image de base{% endif %}" alt="{{ membre.prenom }} 	{{ membre.nom }}"/></a>
-							{% endfor %}
+							Projet de type : {{ projet.type }}
+							<div class="membres">
+								{% for membre in projet.membres %}
+									<a href=""><img src="{% if membre.image %}{{ membre.image }}{% else %}assets/img/logo.png{% endif %}" alt="{{ membre.prenom }} 	{{ membre.nom }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"/></a>
+								{% endfor %}
+							</div>
 						</div>
 		      </div>
 		    </div>
