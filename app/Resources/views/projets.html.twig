@@ -31,6 +31,7 @@
   			<div class="row">
   				<div class="col-md-12">
   				<h1 class="centre">Nos <b>réalisations</b></h1>
+					<p>N'hésitez pas à cliquer sur les projets pour plus de détails.</p>
   				<div class="grid">
 						{% set i = 0 %}
             {% for projet in projets %}
@@ -73,7 +74,9 @@
 								<div class="col-sm-8">
 									<p>{{ projet.description }}</p>
 								</div>
-								Langages : <span class="badge">Langage 1 ... A REMPLIR</span>
+								{% for langage in projet.langages %}
+										<span class="badge">{{ langage.langage }}</span>
+								{% endfor %}
 							</div>
 						</div>
 		      </div>
