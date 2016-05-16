@@ -1,11 +1,20 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<section id="divProjet">
+<section id="promotions">
   <h1 class="centre">Les <strong>promotions</strong></h1>
-  <div>
-    <h2>20<strong>16</strong> - 20<strong>17</strong></h2>
-    <img src="/promotions/2016_2017.png" alt="Promotion 2016/2017 - Digital Design - ISEN Brest"/>
-  </div>
+  <div class="container-fluid">
+  {% set principal = 1 %}
+  {% set first = 1 %}
+  {% for promotion in promotions %}
+    {% if (principal or  first) %} <div class="row"> {% endif %}
+          <div class="{% if (principal) %}col-md-12 {% set principal = 0 %}{% else %}col-md-6{% set first = 0 %}{% endif %}">
+            <h2>{{ promotion.date }}</h2>
+            <img src="{{ asset('assets/img/trombi.png') }}" alt="Promotion 2016/2017 - Digital Design - ISEN Brest"/>
+          </div>
+        {% if (principal or  not first) %}</div>{% set first = 1 %}{% endif %}
+      {% set principal = 0 %}
+  {% endfor %}
+</div>
 </section>
 {% endblock %}

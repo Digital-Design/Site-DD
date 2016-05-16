@@ -412,6 +412,18 @@ figure.effect-ming:hover img {
 
 /* -- END PROJETS */
 
+/* -- PROMOTIONS -- */
+section#promotions {
+	div {
+		text-align: center;
+	}
+	img {
+		max-width: 800px;
+		width: 90%;
+	}
+}
+/* -- END PROMOTIONS -- */
+
 /* -- CONTACT -- */
 .fond{
   background-color: $blue-color;
