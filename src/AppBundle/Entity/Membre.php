@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Membre
@@ -41,9 +43,14 @@ class Membre
     private $prenom;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Promotion", mappedBy="membres")
+     */
+    private $promotions;
+
+    /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
 
@@ -60,6 +67,47 @@ class Membre
      * @ORM\Column(name="site", type="string", length=255, nullable=true)
      */
     private $site;
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    protected $file;
+
+    public function getAbsolutePath()
+    {
+      return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
+    }
+
+    public function getWebPath()
+    {
+      return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
+    }
+
+    protected function getUploadRootDir()
+    {
+      return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'assets/img/membres';
+    }
+
+    public function upload()
+    {
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
+
+        $this->path = $this->getFile()->getClientOriginalName();
+
+        $this->file = null;
+    }
 
     public function __toString()
     {
@@ -125,6 +173,26 @@ class Membre
     }
 
     /**
+     * Get file.
+     *
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Sets file.
+     *
+     * @param UploadedFile $file
+     */
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+    /**
      * Set image
      *
      * @param string $image
@@ -177,6 +245,7 @@ class Membre
     public function __construct()
     {
         $this->langages = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->promotions = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -235,5 +304,39 @@ class Membre
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Add promotion
+     *
+     * @param \AppBundle\Entity\Promotion $promotion
+     *
+     * @return Membre
+     */
+    public function addPromotion(\AppBundle\Entity\Promotion $promotion)
+    {
+        $this->promotions[] = $promotion;
+
+        return $this;
+    }
+
+    /**
+     * Remove promotion
+     *
+     * @param \AppBundle\Entity\Promotion $promotion
+     */
+    public function removePromotion(\AppBundle\Entity\Promotion $promotion)
+    {
+        $this->promotions->removeElement($promotion);
+    }
+
+    /**
+     * Get promotions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPromotions()
+    {
+        return $this->promotions;
     }
 }
