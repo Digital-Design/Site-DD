@@ -15,9 +15,9 @@
 			<div class="gallery js-flickity">
         {% for projet in projets %}
           {% if projet.fini == 0 %}
-           {% if 1 %}
+           {% if projet.media %}
       				<div class="gallery-cell">
-      					<img src="{{ asset('assets/img/projets/donkeyrugby1.jpg') }}" alt="{{ projet.titre }}"/>
+      					<img src="{{ projet.mdeia }}" alt="{{ projet.titre }}"/>
       				</div>
             {% else %}
               {# lien youtube #}
@@ -34,9 +34,9 @@
   				<div class="grid">
             {% for projet in projets %}
               {% if projet.fini == 1 %}
-               {% if 1 %}
+               {% if projet.mdeia %}
                  <figure class="effect-ming">
-                   <img src="{{ asset('assets/img/projets/donkeyrugby1.jpg') }}" alt="{{ projet.titre }}"/>
+                   <img src="{{ projet.media }}" alt="{{ projet.titre }}"/>
                    <figcaption>
                      <h2>{{ projet.titre|raw }}</h2>
                      <p>{{ projet.description|raw }}</p>
