@@ -24,8 +24,28 @@ body {
 	font-family: 'OpenSans-Regular';
 
   section {
-  	padding: 80px 10%;
+  	padding: 50px 10% 90px 10%;
   }
+
+	#accueil,
+	#services{
+		background-color: $blue-color;
+		color: $grey-color;
+	}
+
+	#presentation{
+		background-color: $black-color;
+		color: $grey-color;
+	}
+
+	#equipe{
+		background-color: $grey-color;
+		color: $black-color;
+
+		h1 {
+			color: $black-color;
+		}
+	}
 
   h1, h2 {
   	font-family: 'BebasNeue-Book';
@@ -35,6 +55,7 @@ body {
 
   h1 {
   	font-size: 80px;
+		margin-bottom: 50px;
   }
 
   h2 {
