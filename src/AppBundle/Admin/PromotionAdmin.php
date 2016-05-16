@@ -18,10 +18,21 @@ class PromotionAdmin extends Admin
 	*/
     protected function configureFormFields(FormMapper $formMapper)
     {
+
+        $promotion = $this->getSubject();
+
+        $fileFieldOptions = array('required' => false, 'help'=>"Indiquer un média décrivant cette promotion.", 'label' => 'Media');
+        if ($promotion && ($webPath = $promotion->getWebPath())) {
+
+            $container = $this->getConfigurationPool()->getContainer();
+            $fullPath = $container->get('request')->getBasePath().'/'.$webPath;
+
+            $fileFieldOptions['help'] = '<img src="'.$fullPath.'" class="admin-preview" height="300" />';
+        }
         $formMapper->with("Création d'une promotion", array('description' => "Ce formulaire permet la création d'une promotion.")) ;
         $formMapper->add('date', 'text', array('label' => 'Date de la promotion', 'help'=>"Interval d'années de cette promotion (ex : 2015 - 2016)")) ;
         $formMapper->add('membres', 'entity', array('class' => 'AppBundle\Entity\Membre', 'property' => 'nom', 'multiple' => true, 'required'=>false)) ;
-
+        $formMapper->add('file', 'file', $fileFieldOptions) ;
     }
 
     /**

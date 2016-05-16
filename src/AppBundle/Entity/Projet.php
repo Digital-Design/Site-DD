@@ -117,7 +117,7 @@ class Projet
             $this->getFile()->getClientOriginalName()
         );
 
-        $this->path = $this->getFile()->getClientOriginalName();
+        $this->media = $this->getFile()->getClientOriginalName();
 
         $this->file = null;
     }

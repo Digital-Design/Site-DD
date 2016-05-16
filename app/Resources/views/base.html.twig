@@ -12,11 +12,9 @@
   	<meta name="author" content="Digital Design" />
 
   	<link rel="shortcut icon" href="{{ asset('assets/img/favicon.png') }}">
-
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-
     {% stylesheets filter="scssphp" output="assets/css/app.css"
+      "assets/css/font-awesome.min.css"
       "assets/scss/*.scss"
     %}
       <link rel="stylesheet" href="{{ asset_url }}" />
@@ -37,13 +35,18 @@
 
     {% block body %}{% endblock %}
 
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/modernizr.custom.js') }}"></script>
-    <script src="{{ asset('assets/js/classie.js') }}"></script>
-    <script src="{{ asset('assets/js/borderMenu.js') }}"></script>
-    <script src="{{ asset('assets/js/spop.min.js') }}"></script>
-    <script src="{{ asset('assets/js/script.js') }}"></script>
+    {% javascripts filter="?jsqueeze" output="assets/js/app.js"
+        "assets/js/jquery.min.js"
+        "assets/js/bootstrap.min.js"
+        "assets/js/modernizr.custom.js"
+        "assets/js/classie.js"
+        "assets/js/borderMenu.js"
+        "assets/js/spop.min.js"
+        "assets/js/script.js"
+    %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
     {% block js %}{% endblock %}
 
   </body>
