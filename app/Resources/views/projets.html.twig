@@ -15,9 +15,9 @@
 			<div class="gallery js-flickity">
         {% for projet in projets %}
           {% if projet.fini == 0 %}
-           {% if 1 %}
+           {% if projet.media %}
       				<div class="gallery-cell">
-      					<img src="{{ asset('assets/img/projets/donkeyrugby1.jpg') }}" alt="{{ projet.titre }}"/>
+      					<img src="assets/img/projets/{{ projet.media }}" alt="{{ projet.titre }}"/>
       				</div>
             {% else %}
               {# lien youtube #}
@@ -31,43 +31,71 @@
   			<div class="row">
   				<div class="col-md-12">
   				<h1 class="centre">Nos <b>réalisations</b></h1>
+					<p>N'hésitez pas à cliquer sur les projets pour plus de détails.</p>
   				<div class="grid">
+						{% set i = 0 %}
             {% for projet in projets %}
               {% if projet.fini == 1 %}
-               {% if 1 %}
-                 <figure class="effect-ming">
-                   <img src="{{ asset('assets/img/projets/donkeyrugby1.jpg') }}" alt="{{ projet.titre }}"/>
+               {% if projet.media %}
+                 <figure class="effect-sarah">
+                   <img src="assets/img/projets/{{ projet.media }}" alt="{{ projet.titre }}"/>
                    <figcaption>
                      <h2>{{ projet.titre|raw }}</h2>
                      <p>{{ projet.description|raw }}</p>
-                     <!--<a href="projets/{{ projet.id }}">Voir plus</a>-->
+                     <a href="" data-toggle="modal" data-target="#dialog{{ i }}">Voir plus</a>
                    </figcaption>
                  </figure>
                 {% else %}
                   {# lien youtube #}
                 {% endif %}
               {% endif %}
+							{% set i = i + 1 %}
             {% endfor %}
   					</div>
   				</div>
   			</div>
   		</section>
 
-
-  <h1>Nos Projets</h1>
-  {% for projet in projets %}
-    {# dump(projet) #}
-    <h2>{{ projet.titre }}</h2>
-    <p>{{ projet.description }}</p>
-    <p>type:{{ projet.type }}</p>
-    <p>media {{ projet.media }} </p>
-    <p>date {{ projet.date|date("m/d/Y") }} </p>
-    <p>Membres:
-    {% for membre in projet.membres %}
-      {{ membre.nom }} - {{ membre.prenom }}
-    {% endfor %}
-    </p>
-    <p>Languages:
-    </p>
+		{% set i = 0 %}
+	  {% for projet in projets %}
+		<div class="modal fade" id="dialog{{ i }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h3 class="modal-title" id="myModalLabel">{{ projet.titre }} <span class="sous-titre">{{ projet.date|date("m/d/Y") }}</span></h3>
+		      </div>
+		      <div class="modal-body">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-sm-4">
+									{% if projet.media %}
+										<img src="assets/img/projets/{{ projet.media }}" alt="{{ projet.titre }}"/>
+									{% endif %}
+								</div>
+								<div class="col-sm-8">
+									<p>{{ projet.description }}</p>
+								</div>
+							</div>
+							<br>
+							{% for langage in projet.langages %}
+									<span class="badge">{{ langage.langage }}</span>
+							{% endfor %}
+						</div>
+		      </div>
+		      <div class="modal-footer">
+						<div>
+							Projet de type : {{ projet.type }}
+							<div class="membres">
+								{% for membre in projet.membres %}
+									<a href=""><img src="{% if membre.image %}{{ membre.image }}{% else %}assets/img/logo.png{% endif %}" alt="{{ membre.prenom }} 	{{ membre.nom }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"/></a>
+								{% endfor %}
+							</div>
+						</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		{% set i = i + 1 %}
   {% endfor %}
 {% endblock %}
