@@ -21,7 +21,7 @@ class MembreAdmin extends Admin
 
         $membre = $this->getSubject();
 
-        $fileFieldOptions = array('required' => false, "help"=>"Indiquer une image décrivant ce membre.", 'label' => 'Image');
+        $fileFieldOptions = array('required' => false, 'help'=>"Indiquer un média décrivant ce membre.", 'label' => 'Media');
         if ($membre && ($webPath = $membre->getWebPath())) {
 
             $container = $this->getConfigurationPool()->getContainer();
@@ -29,7 +29,6 @@ class MembreAdmin extends Admin
 
             $fileFieldOptions['help'] = '<img src="'.$fullPath.'" class="admin-preview" height="300" />';
         }
-
         $formMapper->with("Création d'un Membre", array('description' => "Ce formulaire permet la création d'un membre.")) ;
         $formMapper->add('nom', 'text', array('help'=>"Indiquer un nom décrivant ce membre.")) ;
         $formMapper->add('prenom', 'text', array('help'=>"Indiquer un prénom décrivant ce membre.")) ;
@@ -66,7 +65,7 @@ class MembreAdmin extends Admin
         $datagridMapper->add('id');
         $datagridMapper->add('nom');
         $datagridMapper->add('prenom');
-        $datagridMapper->add('image');
+        $datagridMapper->add('media');
         $datagridMapper->add('site');
     }
 
@@ -80,7 +79,7 @@ class MembreAdmin extends Admin
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('nom');
         $listMapper->addIdentifier('prenom');
-        $listMapper->addIdentifier('image');
+        $listMapper->addIdentifier('media');
         $listMapper->addIdentifier('site');
     }
 }

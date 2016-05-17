@@ -3,8 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Membre
@@ -12,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="membre")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MembreRepository")
  */
-class Membre
+class Membre extends File
 {
     /**
      * @var int
@@ -57,61 +55,18 @@ class Membre
     /**
      * @var string
      *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
-     */
-    private $image;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="site", type="string", length=255, nullable=true)
      */
     private $site;
 
-    /**
-     * @Assert\File(maxSize="6000000")
-     */
-    protected $file;
-
-    public function getAbsolutePath()
+    public function __toString()
     {
-      return null === $this->image ? null : $this->getUploadRootDir().'/'.$this->image;
-    }
-
-    public function getWebPath()
-    {
-      return null === $this->image ? null : $this->getUploadDir().'/'.$this->image;
-    }
-
-    protected function getUploadRootDir()
-    {
-      return __DIR__.'/../../../web/'.$this->getUploadDir();
+        return (string) $this->nom;
     }
 
     protected function getUploadDir()
     {
         return 'assets/img/membres';
-    }
-
-    public function upload()
-    {
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
-        );
-
-        $this->path = $this->getFile()->getClientOriginalName();
-
-        $this->file = null;
-    }
-
-    public function __toString()
-    {
-        return (string) $this->nom;
     }
 
     /**
@@ -170,50 +125,6 @@ class Membre
     public function getPrenom()
     {
         return $this->prenom;
-    }
-
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Membre
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**

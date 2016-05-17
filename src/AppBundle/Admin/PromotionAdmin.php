@@ -35,6 +35,24 @@ class PromotionAdmin extends Admin
         $formMapper->add('file', 'file', $fileFieldOptions) ;
     }
 
+    public function prePersist($promotion) {
+      $this->saveFile($promotion);
+    }
+
+    public function preUpdate($promotion) {
+      $this->saveFile($promotion);
+    }
+
+    public function saveFile($promotion) {
+      $promotion->upload();
+    }
+
+    private function manageFileUpload($promotion) {
+      if ($promotion->getFile()) {
+        $promotion->refreshUpdated();
+      }
+    }
+
     /**
     * Configuration des filtres utilisés pour filtrer et afficher la liste des promotions
     *

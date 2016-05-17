@@ -3,8 +3,6 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Projet
@@ -12,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="projet")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProjetRepository")
  */
-class Projet
+class Projet extends File
 {
 
     /**
@@ -74,60 +72,18 @@ class Projet
      */
     private $fini;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="media", type="string", length=255, nullable=true)
-     */
-    protected $media;
 
-    /**
-     * @Assert\File(maxSize="6000000")
-     */
-    protected $file;
-
-    public function getAbsolutePath()
-    {
-      return null === $this->media ? null : $this->getUploadRootDir().'/'.$this->media;
-    }
-
-    public function getWebPath()
-    {
-      return null === $this->media ? null : $this->getUploadDir().'/'.$this->media;
-    }
-
-    protected function getUploadRootDir()
-    {
-      return __DIR__.'/../../../web/'.$this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        return 'assets/img/projets';
-    }
-
-    public function upload()
-    {
-        if (null === $this->getFile()) {
-            return;
-        }
-
-        $this->getFile()->move(
-            $this->getUploadRootDir(),
-            $this->getFile()->getClientOriginalName()
-        );
-
-        $this->media = $this->getFile()->getClientOriginalName();
-
-        $this->file = null;
-    }
 
     public function __toString()
     {
         return (string) $this->titre;
     }
 
-
+    protected function getUploadDir()
+    {
+        return 'assets/img/projets';
+    }
+    
     /**
      * Get id
      *
@@ -136,26 +92,6 @@ class Projet
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Get file.
-     *
-     * @return UploadedFile
-     */
-    public function getFile()
-    {
-        return $this->file;
-    }
-
-    /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
-     */
-    public function setFile(UploadedFile $file = null)
-    {
-        $this->file = $file;
     }
 
     /**
@@ -168,30 +104,6 @@ class Projet
     public function setTitre($titre)
     {
         $this->titre = $titre;
-
-        return $this;
-    }
-
-    /**
-     * Get media
-     *
-     * @return string
-     */
-    public function getMedia()
-    {
-        return $this->media;
-    }
-
-    /**
-     * Set media
-     *
-     * @param string $media
-     *
-     * @return Projet
-     */
-    public function setMedia($media)
-    {
-        $this->media = $media;
 
         return $this;
     }
