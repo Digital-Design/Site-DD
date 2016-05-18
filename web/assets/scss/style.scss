@@ -442,20 +442,20 @@ figure.effect-sarah:hover p {
 .modal-footer {
 	> div {
 		border-top: 2px solid $blue-color;
+		padding-top: 8px;
 		text-align: left;
 	}
 
 	.membres {
 		text-align: right;
 		float: right;
-		margin-top: 8px;
 
 		a {
-			border-radius: 100%;
 			width: 30px;
 			display: inline-block;
 
 			img {
+				border-radius: 100%;
 				width: 100%;
 			}
 		}

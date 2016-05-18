@@ -92,7 +92,7 @@
 											{% else %}
 												{{ asset('assets/img/logo.png') }}
 											{% endif %}
-										" alt="{{ membre.prenom }}-{{ membre.nom }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"/></a>
+										" alt="{{ membre.prenom }}-{{ membre.nom }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ membre.prenom }}&nbsp;{{ membre.nom }}"/></a>
 								{% endfor %}
 							</div>
 						</div>
