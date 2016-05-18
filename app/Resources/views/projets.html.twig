@@ -15,9 +15,9 @@
 			<div class="gallery js-flickity">
         {% for projet in projets %}
           {% if projet.fini == 0 %}
-           {% if projet.media %}
+           {% if projet.webPath %}
       				<div class="gallery-cell">
-      					<img src="assets/img/projets/{{ projet.media }}" alt="{{ projet.titre }}"/>
+      					<img src="{{ asset(projet.webPath) }}" alt="{{ projet.titre }}"/>
       				</div>
             {% else %}
               {# lien youtube #}
@@ -33,32 +33,29 @@
   				<h1 class="centre">Nos <b>réalisations</b></h1>
 					<p>N'hésitez pas à cliquer sur les projets pour plus de détails.</p>
   				<div class="grid">
-						{% set i = 0 %}
             {% for projet in projets %}
               {% if projet.fini == 1 %}
-               {% if projet.media %}
+               {% if projet.webPath %}
                  <figure class="effect-sarah">
-                   <img src="assets/img/projets/{{ projet.media }}" alt="{{ projet.titre }}"/>
+                   <img src="{{ asset(projet.webPath) }}" alt="{{ projet.titre }}"/>
                    <figcaption>
                      <h2>{{ projet.titre|raw }}</h2>
                      <p>{{ projet.description|raw }}</p>
-                     <a href="" data-toggle="modal" data-target="#dialog{{ i }}">Voir plus</a>
+                     <a href="" data-toggle="modal" data-target="#dialog{{ projet.id }}">Voir plus</a>
                    </figcaption>
                  </figure>
                 {% else %}
                   {# lien youtube #}
                 {% endif %}
               {% endif %}
-							{% set i = i + 1 %}
             {% endfor %}
   					</div>
   				</div>
   			</div>
   		</section>
 
-		{% set i = 0 %}
 	  {% for projet in projets %}
-		<div class="modal fade" id="dialog{{ i }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal fade" id="dialog{{ projet.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
 		      <div class="modal-header">
@@ -69,8 +66,8 @@
 						<div class="container-fluid">
 							<div class="row">
 								<div class="col-sm-4">
-									{% if projet.media %}
-										<img src="assets/img/projets/{{ projet.media }}" alt="{{ projet.titre }}"/>
+									{% if projet.webPath %}
+										<img src="{{ asset(projet.webPath) }}" alt="{{ projet.titre }}"/>
 									{% endif %}
 								</div>
 								<div class="col-sm-8">
@@ -88,7 +85,14 @@
 							Projet de type : {{ projet.type }}
 							<div class="membres">
 								{% for membre in projet.membres %}
-									<a href=""><img src="{% if membre.image %}{{ membre.image }}{% else %}assets/img/logo.png{% endif %}" alt="{{ membre.prenom }} 	{{ membre.nom }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"/></a>
+									<a href="">
+										<img src="
+											{% if membre.webPath %}
+												{{ asset(membre.webPath) }}
+											{% else %}
+												{{ asset('assets/img/logo.png') }}
+											{% endif %}
+										" alt="{{ membre.prenom }}-{{ membre.nom }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"/></a>
 								{% endfor %}
 							</div>
 						</div>
@@ -96,6 +100,5 @@
 		    </div>
 		  </div>
 		</div>
-		{% set i = i + 1 %}
   {% endfor %}
 {% endblock %}

@@ -75,5 +75,6 @@ class PromotionAdmin extends Admin
         $listMapper->addIdentifier('id');
         $listMapper->add('date');
         $listMapper->add('membre');
+        $listMapper->add('media', 'string', array('template' => 'admin/list_image.html.twig'));
     }
 }

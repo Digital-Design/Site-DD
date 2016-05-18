@@ -123,5 +123,6 @@ class ProjetAdmin extends Admin
             'catalogue' => 'AppBundle'
         ));
         $listMapper->addIdentifier('date');
+        $listMapper->add('media', 'string', array('template' => 'admin/list_image.html.twig'));
     }
 }

@@ -65,7 +65,6 @@ class MembreAdmin extends Admin
         $datagridMapper->add('id');
         $datagridMapper->add('nom');
         $datagridMapper->add('prenom');
-        $datagridMapper->add('media');
         $datagridMapper->add('site');
     }
 
@@ -79,7 +78,7 @@ class MembreAdmin extends Admin
         $listMapper->addIdentifier('id');
         $listMapper->addIdentifier('nom');
         $listMapper->addIdentifier('prenom');
-        $listMapper->addIdentifier('media');
         $listMapper->addIdentifier('site');
+        $listMapper->add('media', 'string', array('template' => 'admin/list_image.html.twig'));
     }
 }
