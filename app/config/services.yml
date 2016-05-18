@@ -40,3 +40,9 @@ services:
     arguments: [~, AppBundle\Entity\Promotion, ~]
     tags:
     - { name: sonata.admin, manager_type: orm, group: "Ressources",  label: Promotions }
+
+  admin.contact:
+    class: AppBundle\Admin\ContactAdmin
+    arguments: [~, AppBundle\Entity\Contact, ~]
+    tags:
+    - { name: sonata.admin, manager_type: orm, group: "Contact",  icon: '<i class="fa fa-envelope"></i>',  label: Contact }

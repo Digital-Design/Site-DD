@@ -83,7 +83,7 @@ class Projet extends File
     {
         return 'assets/img/projets';
     }
-    
+
     /**
      * Get id
      *
@@ -213,6 +213,7 @@ class Projet extends File
     {
         return $this->fini;
     }
+    
     /**
      * Constructor
      */

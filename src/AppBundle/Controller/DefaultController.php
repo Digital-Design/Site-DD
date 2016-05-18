@@ -4,6 +4,9 @@ namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Form\ContactType;
+use AppBundle\Entity\Contact;
 
 class DefaultController extends Controller
 {
@@ -36,9 +39,22 @@ class DefaultController extends Controller
     /**
      * @Route("/contact", name="contact")
      */
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-        return $this->render('contact.html.twig', array());
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()){
+          if($form->isValid()){
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+            return $this->render('contact.html.twig', array('form' => $form->createView(), 'valide' => true));
+          }else{
+            return $this->render('contact.html.twig', array('form' => $form->createView(), 'valide' => false));
+          }
+        }
+        return $this->render('contact.html.twig', array('form' => $form->createView()));
     }
 
     /**
