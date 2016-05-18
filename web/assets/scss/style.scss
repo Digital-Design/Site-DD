@@ -430,6 +430,11 @@ figure.effect-sarah:hover p {
 	h3 {
 		font-family: 'BebasNeue-Book', Arial;
 		border-bottom: 3px solid $blue-color;
+
+		.sous-titre {
+			font-size: 18px;
+			color: lighten($black-color, 50%);
+		}
 	}
 }
 
