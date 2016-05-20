@@ -39,7 +39,7 @@ class Tuto
     private $langages;
 
     /**
-    * @ORM\OneToOne(targetEntity="AppBundle\Entity\Type")
+    * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Type")
     */
     private $type;
 

@@ -23,7 +23,7 @@ class DefaultController extends Controller
      */
     public function projetsAction()
     {
-        $projets = $this->getDoctrine()->getRepository('AppBundle:Projet')->findAll();
+        $projets = $this->getDoctrine()->getRepository('AppBundle:Projet')->findBy(array(), array('date' => 'DESC'));
         return $this->render('projets.html.twig', array('projets' => $projets));
     }
 
@@ -32,7 +32,7 @@ class DefaultController extends Controller
      */
     public function tutorielsAction()
     {
-        $tutos = $this->getDoctrine()->getRepository('AppBundle:Tuto')->findAll();
+        $tutos = $this->getDoctrine()->getRepository('AppBundle:Tuto')->findBy(array(), array('date' => 'DESC'));
         return $this->render('tuto.html.twig', array('tutos' => $tutos));
     }
 

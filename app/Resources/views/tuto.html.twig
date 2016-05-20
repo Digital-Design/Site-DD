@@ -1,24 +1,63 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<h1>Tuto</h1>
-https://www.youtube.com/channel/UCGSNBV7l9lUefwb4KOS4NOA
-{% for tuto in tutos %}
-  {# dump(tuto) #}
-  <h2>{{ tuto.titre }}</h2>
-  <p>{{ tuto.description }}</p>
-  <p>type:{{ tuto.type }}</p>
-  <p>media {{ tuto.media }} </p>
-  <p>date {{ tuto.date|date("m/d/Y") }} </p>
-  <p>Membres:
-  {% for membre in tuto.membres %}
-    {{ membre.nom }} - {{ membre.prenom }}
+
+<section id="tutos">
+
+  <h1>Tuto</h1>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+          {% if tutos[0] is defined %}
+            <h2>{{ tutos[0].titre }} - le {{ tutos[0].date|date("m/d/Y") }}</h2>
+            <p>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tutos[0].media|split('?v=')[1] }}" frameborder="0" allowfullscreen></iframe>
+            </p>
+            <p>{{ tutos[0].description }}</p>
+            <p>Type:{{ tutos[0].type }}</p>
+            <p>
+              Langages:
+              {% for langage in tutos[0].langages %}
+                {{ langage.langage }},
+              {% endfor %}
+            </p>
+            <p>
+              Membres:
+              {% for membre in tutos[0].membres %}
+                {{ membre.nom }} - {{ membre.prenom }}
+              {% endfor %}
+            </p>
+          {% endif %}
+        </div>
+    </div>
+
+    {% for row in tutos|batch(2) %}
+      <div class="row">
+        {% for tuto in row %}
+          <div class="col-md-6">
+              <h2>{{ tuto.titre }} - le {{ tuto.date|date("m/d/Y") }}</h2>
+              <p>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tuto.media|split('?v=')[1] }}" frameborder="0" allowfullscreen></iframe>
+              </p>
+              <p>{{ tuto.description }}</p>
+              <p>Type:{{ tuto.type }}</p>
+              <p>
+                Languages:
+                {% for langage in tuto.langages %}
+                  {{ langage.langage }}{% if not loop.last %},{% endif %}
+                {% endfor %}
+              </p>
+              <p>
+                Membres:
+                {% for membre in tuto.membres %}
+                  {{ membre.nom }} - {{ membre.prenom }}
+                {% endfor %}
+              </p>
+          </div>
+        {% endfor %}
+    </div>
   {% endfor %}
-  </p>
-  <p>Languages:
-  {% for language in tuto.languages %}
-    {{ language.language }},
-  {% endfor %}
-  </p>
-{% endfor %}
+
+</section>
 {% endblock %}
