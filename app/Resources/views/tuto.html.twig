@@ -10,24 +10,34 @@
     <div class="row">
         <div class="col-md-12">
           {% if tutos[0] is defined %}
-            <h2>{{ tutos[0].titre }} - le {{ tutos[0].date|date("m/d/Y") }}</h2>
-            <p>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tutos[0].media|split('?v=')[1] }}" frameborder="0" allowfullscreen></iframe>
+          <div class="inner">
+            <h2>{{ tutos[0].titre }} - {{ tutos[0].type }} - le {{ tutos[0].date|date("m/d/Y") }}</h2>
+            <div class="embed-responsive embed-responsive-16by9">
+              <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ tutos[0].media|split('?v=')[1] }}" frameborder="0" allowfullscreen></iframe>
+            </div>
             </p>
-            <p>{{ tutos[0].description }}</p>
-            <p>Type:{{ tutos[0].type }}</p>
-            <p>
-              Langages:
-              {% for langage in tutos[0].langages %}
-                {{ langage.langage }},
-              {% endfor %}
-            </p>
-            <p>
-              Membres:
-              {% for membre in tutos[0].membres %}
-                {{ membre.nom }} - {{ membre.prenom }}
-              {% endfor %}
-            </p>
+            <div class="description">
+              {{ tutos[0].description|raw }}
+              <hr/>
+              <ul class="tags" style="float:left;">
+                {% for langage in tutos[0].langages %}
+                  <li><a href="#" class="tag">{{ langage.langage }}</a></li>
+                {% endfor %}
+              </ul>
+              <div class="membres">
+                {% for membre in tutos[0].membres %}
+  									<a href="">
+  										<img src="
+  											{% if membre.webPath %}
+  												{{ asset(membre.webPath) }}
+  											{% else %}
+  												{{ asset('assets/img/logo.png') }}
+  											{% endif %}
+  										" alt="{{ membre.prenom }}-{{ membre.nom }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ membre.prenom }}&nbsp;{{ membre.nom }}"/></a>
+  							{% endfor %}
+  						</div>
+            </div>
+          </div>
           {% endif %}
         </div>
     </div>
@@ -36,26 +46,35 @@
       <div class="row">
         {% for tuto in row %}
           <div class="col-md-6">
-              <h2>{{ tuto.titre }} - le {{ tuto.date|date("m/d/Y") }}</h2>
-              <p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ tuto.media|split('?v=')[1] }}" frameborder="0" allowfullscreen></iframe>
-              </p>
-              <p>{{ tuto.description }}</p>
-              <p>Type:{{ tuto.type }}</p>
-              <p>
-                Languages:
-                {% for langage in tuto.langages %}
-                  {{ langage.langage }}{% if not loop.last %},{% endif %}
-                {% endfor %}
-              </p>
-              <p>
-                Membres:
-                {% for membre in tuto.membres %}
-                  {{ membre.nom }} - {{ membre.prenom }}
-                {% endfor %}
-              </p>
+            <div class="inner">
+              <h2>{{ tuto.titre }} - {{ tuto.type }} - le {{ tuto.date|date("m/d/Y") }}</h2>
+              <div class="embed-responsive embed-responsive-4by3">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ tuto.media|split('?v=')[1] }}" frameborder="0" allowfullscreen></iframe>
+              </div>
+              <div class="description">
+                <p>{{ tuto.description|raw }}</p>
+                <hr/>
+                <ul class="tags" style="float:left;">
+                  {% for langage in tuto.langages %}
+                    <li><a href="#" class="tag">{{ langage.langage }}</a></li>
+                  {% endfor %}
+                </ul>
+                <div class="membres">
+                  {% for membre in tuto.membres %}
+    									<a href="">
+    										<img src="
+    											{% if membre.webPath %}
+    												{{ asset(membre.webPath) }}
+    											{% else %}
+    												{{ asset('assets/img/logo.png') }}
+    											{% endif %}
+    										" alt="{{ membre.prenom }}-{{ membre.nom }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ membre.prenom }}&nbsp;{{ membre.nom }}"/></a>
+    							{% endfor %}
+    						</div>
+              </div>
           </div>
-        {% endfor %}
+        </div>
+      {% endfor %}
     </div>
   {% endfor %}
 

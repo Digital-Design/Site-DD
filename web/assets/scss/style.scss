@@ -508,8 +508,92 @@ button.center-block{
 
 /* -- TUTO -- */
 section#tutos{
-	.row>div{
+	.inner{
 		background-color: #fff;
+		padding: 5px 0 20px 0;
+		h2{
+			color: $blue-color;
+		}
+		.description{
+			padding: 10px;
+		}
 	}
 }
+
+.membres {
+	text-align: right;
+	float: right;
+
+	a {
+		width: 30px;
+		display: inline-block;
+		img {
+			border-radius: 100%;
+			width: 100%;
+		}
+	}
+}
+
+.tags {
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+	text-decoration: none;
+	li {
+	  float: left;
+		text-decoration: none;
+	}
+}
+
+.tag {
+  background: #eee;
+  border-radius: 3px 0 0 3px;
+  color: #999;
+  display: inline-block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0 20px 0 23px;
+  position: relative;
+  margin: 0 10px 10px 0;
+	text-decoration: none;
+  -webkit-transition: color 0.2s;
+}
+
+.tag::before {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: inset 0 1px rgba(0, 0, 0, 0.25);
+	content: '';
+	height: 6px;
+	left: 10px;
+	position: absolute;
+	width: 6px;
+	top: 10px;
+	text-decoration: none;
+}
+
+.tag::after {
+	text-decoration: none;
+	background: #fff;
+	border-bottom: 13px solid transparent;
+	border-left: 10px solid #eee;
+	border-top: 13px solid transparent;
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.tag:hover {
+	background-color: $blue-color;
+	color: white;
+	text-decoration: none;
+}
+
+.tag:hover::after {
+	text-decoration: none;
+	border-left-color: $blue-color;
+}
+
 /* -- END TUTO -- */
