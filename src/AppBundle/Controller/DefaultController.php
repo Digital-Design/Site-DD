@@ -49,6 +49,22 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($contact);
             $em->flush();
+
+            //creation du mail
+            $message = \Swift_Message::newInstance()
+              ->setSubject('Contact depuis votre site')
+              ->setFrom('contact@isenclub.fr')
+              ->setTo('digitaldesign.isen@gmail.com')
+              ->setBody(
+                $this->renderView(
+                  // app/Resources/views/emails/contact.html.twig
+                  'emails/contact.html.twig',
+                    array('contact' => $contact)
+                  ),
+                'text/html'
+              );
+            //envoi du mail
+            $this->get('mailer')->send($message);
             return $this->render('contact.html.twig', array('form' => $form->createView(), 'valide' => true));
           }else{
             return $this->render('contact.html.twig', array('form' => $form->createView(), 'valide' => false));
