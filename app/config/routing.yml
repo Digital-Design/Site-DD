@@ -33,3 +33,9 @@ app:
 admin_area:
     resource: "@SonataAdminBundle/Resources/config/routing/sonata_admin.xml"
     prefix: /admin
+
+   
+mail:
+    path: /mail
+    defaults: { _controller: AppBundle:Default:mail}
+

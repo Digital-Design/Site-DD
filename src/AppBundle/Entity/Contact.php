@@ -42,11 +42,20 @@ class Contact
      */
     private $message;
 
+    
     /**
+     * @var string
+     *
+     * @ORM\Column(name="nomProjet", type="text", nullable=true)
+     */
+    private $nomProjet;
+
+    
+     /**
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
-     */
+    */
     private $date;
 
     public function __toString()
@@ -145,6 +154,20 @@ class Contact
         return $this->message;
     }
 
+
+    public function getNomProjet()
+    {
+        return $this->nomProjet;
+    }
+
+    public function setNomProjet($nomProjet)
+    {
+        $this->nomProjet = $nomProjet;
+
+        return $this;
+    }
+
+    
     /**
      * Set date
      *

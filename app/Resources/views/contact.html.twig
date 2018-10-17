@@ -26,11 +26,19 @@
         {{ form_errors(form.email) }}
         {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
       </div>
+
       <div class="form-group">
-        {{ form_label(form.message, "Message") }}
+        {{ form_label(form.nomProjet, "Nom du projet") }}
+        {{ form_errors(form.nomProjet, {'attr': {'class': 'form-control'}}) }}
+        {{ form_widget(form.nomProjet, {'attr': {'class': 'form-control'}}) }}
+      </div>
+
+      <div class="form-group">
+        {{ form_label(form.message, "Description") }}
         {{ form_errors(form.message, {'attr': {'class': 'form-control'}}) }}
         {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
       </div>
+
       <div class="form-group">
         {{ form_widget(form.submit, {'attr': {'class': 'btn btn-default center-block'}}) }}
       </div>

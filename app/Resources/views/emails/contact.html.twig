@@ -20,8 +20,14 @@
             <tr>
               <td>
                 <p>Nouveau contact depuis votre <a href="{{ url('home') }}">site</a>,</p>
-                <p>{{ contact.nom }} - {{ contact.email }} vous à contacté à {{ contact.date|date("d/m/Y") }}.</p>
-                <p>{{ contact.message }}</p>
+                <p>{{ contact.nom }} - {{ contact.email }} vous a contacté à {{ contact.date|date("d/m/Y") }}.</p>
+                 <p><b>Titre : </b>{{ contact.nomProjet }}</p>
+                <p><b>Description du projet : </b>{{ contact.message }}</p>
+              </td>
+              <td>
+                <form action="{{ url('home') }}addProjet/{{ contact.nomProjet }}/{{ contact.message }}">
+                  <input type="submit" value="Valider" />
+                </form>
               </td>
             </tr>
           </table>

@@ -6,6 +6,8 @@ use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Form\Type\ModelType;
+use Sonata\CoreBundle\Form\Type\CollectionType;
 use AppBundle\Repository\apiKeyRepository;
 
 class ProjetAdmin extends Admin
@@ -110,6 +112,7 @@ class ProjetAdmin extends Admin
         ->addIdentifier('active', 'choice', array(
             'choices' => array(
                 '0' => 'Désactivé',
+                
                 '1' => 'Activé'
             ),
             'catalogue' => 'AppBundle'
@@ -124,5 +127,7 @@ class ProjetAdmin extends Admin
         ));
         $listMapper->addIdentifier('date');
         $listMapper->add('media', 'string', array('template' => 'admin/list_image.html.twig'));
+        
+        
     }
 }

@@ -4,61 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ff26e022f470530314afef5db4e33274",
-    "content-hash": "bea2c8ef12039924f8b9eb3d950e8fbb",
+    "hash": "c45a87753d5d2fe7a29fe7cc7c989c57",
+    "content-hash": "e7d0619f06c8a2164b3cc680f96586c8",
     "packages": [
-        {
-            "name": "cg/kint-bundle",
-            "version": "dev-master",
-            "target-dir": "Cg/KintBundle",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/barelon/CgKintBundle.git",
-                "reference": "49ce3654a9d84c5415271e58e2d12bc787b0db66"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/barelon/CgKintBundle/zipball/49ce3654a9d84c5415271e58e2d12bc787b0db66",
-                "reference": "49ce3654a9d84c5415271e58e2d12bc787b0db66",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.2",
-                "raveren/kint": "~0.9",
-                "symfony/framework-bundle": ">=2.0.0",
-                "symfony/symfony": ">=2.0.0"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-0": {
-                    "Cg\\KintBundle": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Carlos Granados",
-                    "homepage": "http://github.com/barelon"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://github.com/barelon/CgKintBundle"
-                }
-            ],
-            "description": "This bundle lets you use the Kint function in your Twig templates. Kint is a print_r() replacement which produces a structured, collapsible and escaped output",
-            "homepage": "http://github.com/barelon/CgKintBundle",
-            "keywords": [
-                "bundle",
-                "debug",
-                "kint",
-                "symfony",
-                "twig"
-            ],
-            "time": "2014-09-03 08:08:17"
-        },
         {
             "name": "cocur/slugify",
             "version": "v2.1.1",
@@ -2024,6 +1972,71 @@
             "time": "2014-03-11 13:46:42"
         },
         {
+            "name": "phpmailer/phpmailer",
+            "version": "v6.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPMailer/PHPMailer.git",
+                "reference": "7a4459cff6abeb86b63cdbad760f567252f3f39c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/7a4459cff6abeb86b63cdbad760f567252f3f39c",
+                "reference": "7a4459cff6abeb86b63cdbad760f567252f3f39c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "doctrine/annotations": "1.2.*",
+                "friendsofphp/php-cs-fixer": "^2.2",
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": "^4.8 || ^5.7",
+                "zendframework/zend-eventmanager": "3.0.*",
+                "zendframework/zend-i18n": "2.7.3",
+                "zendframework/zend-serializer": "2.7.*"
+            },
+            "suggest": {
+                "ext-mbstring": "Needed to send email in multibyte encoding charset",
+                "hayageek/oauth2-yahoo": "Needed for Yahoo XOAUTH2 authentication",
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication",
+                "psr/log": "For optional PSR-3 debug logging",
+                "stevenmaguire/oauth2-microsoft": "Needed for Microsoft XOAUTH2 authentication",
+                "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHPMailer\\PHPMailer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Jim Jagielski",
+                    "email": "jimjag@gmail.com"
+                },
+                {
+                    "name": "Marcus Bointon",
+                    "email": "phpmailer@synchromedia.co.uk"
+                },
+                {
+                    "name": "Andy Prevost",
+                    "email": "codeworxtech@users.sourceforge.net"
+                },
+                {
+                    "name": "Brent R. Matzelle"
+                }
+            ],
+            "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
+            "time": "2017-11-30 17:20:24"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.5.0",
             "source": {
@@ -2110,57 +2123,6 @@
                 "psr-3"
             ],
             "time": "2012-12-21 11:40:51"
-        },
-        {
-            "name": "raveren/kint",
-            "version": "v0.9.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/raveren/kint.git",
-                "reference": "d4780fc6e974f00c427c1fd2492dca4dcd636704"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/raveren/kint/zipball/d4780fc6e974f00c427c1fd2492dca4dcd636704",
-                "reference": "d4780fc6e974f00c427c1fd2492dca4dcd636704",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.9-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "Kint.class.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rokas Šleinius",
-                    "homepage": "https://github.com/raveren"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/raveren/kint/contributors"
-                }
-            ],
-            "description": "Kint - debugging helper for PHP developers",
-            "homepage": "https://github.com/raveren/kint",
-            "keywords": [
-                "debug",
-                "kint",
-                "php"
-            ],
-            "time": "2014-08-11 11:44:51"
         },
         {
             "name": "sensio/distribution-bundle",
@@ -4177,6 +4139,57 @@
     ],
     "packages-dev": [
         {
+            "name": "raveren/kint",
+            "version": "v0.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/raveren/kint.git",
+                "reference": "d4780fc6e974f00c427c1fd2492dca4dcd636704"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/raveren/kint/zipball/d4780fc6e974f00c427c1fd2492dca4dcd636704",
+                "reference": "d4780fc6e974f00c427c1fd2492dca4dcd636704",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "Kint.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rokas Šleinius",
+                    "homepage": "https://github.com/raveren"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/raveren/kint/contributors"
+                }
+            ],
+            "description": "Kint - debugging helper for PHP developers",
+            "homepage": "https://github.com/raveren/kint",
+            "keywords": [
+                "debug",
+                "kint",
+                "php"
+            ],
+            "time": "2014-08-11 11:44:51"
+        },
+        {
             "name": "symfony/phpunit-bridge",
             "version": "v2.8.6",
             "source": {
@@ -4234,9 +4247,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "cg/kint-bundle": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
